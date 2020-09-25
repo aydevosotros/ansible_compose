@@ -1,0 +1,5 @@
+- hosts: all
+  connection: ssh
+  tasks:
+    - name: Doing ping to every host
+      ping:

@@ -1,0 +1,56 @@
+version: "3.7"
+
+services:
+  ansible_controller:
+    build:
+      context: compose/ansible_controller
+    environment:
+      ANSIBLE_CONFIG: /etc/ansible/ansible.cfg
+    secrets:
+      - source: controller_id_rsa
+        target: /root/.ssh/id_rsa
+      - source: controller_id_rsa_pub
+        target: /root/.ssh/id_rsa.pub
+    volumes:
+    - ./configs/controller/ansible/ansible.cfg:/etc/ansible/ansible.cfg
+    - ./configs/controller/ansible/hosts:/etc/ansible/hosts
+    - ./playbook_ping.yml:/playbook_ping.yml
+    depends_on:
+      - ubuntu1
+      - ubuntu2
+      - ubuntu3
+
+  ubuntu1:
+    build:
+      context: compose/ubuntu_node
+    secrets:
+      - source: node_authorized_keys
+        target: /root/.ssh/authorized_keys
+    volumes:
+    - ./configs/node/sshd_config:/etc/ssh/sshd_config
+
+  ubuntu2:
+    build:
+      context: compose/ubuntu_node
+    secrets:
+      - source: node_authorized_keys
+        target: /root/.ssh/authorized_keys
+    volumes:
+      - ./configs/node/sshd_config:/etc/ssh/sshd_config
+
+  ubuntu3:
+    build:
+      context: compose/ubuntu_node
+    secrets:
+      - source: node_authorized_keys
+        target: /root/.ssh/authorized_keys
+    volumes:
+      - ./configs/node/sshd_config:/etc/ssh/sshd_config
+
+secrets:
+  controller_id_rsa:
+    file: ./secrets/controller/id_rsa
+  controller_id_rsa_pub:
+    file: ./secrets/controller/id_rsa.pub
+  node_authorized_keys:
+    file: ./secrets/node/authorized_keys

@@ -1,0 +1,12 @@
+### Infrastructure
+secrets/
+
+### IntelliJ project files
+.idea
+*.iml
+out
+gen
+
+### Ansible template
+*.retry
+
