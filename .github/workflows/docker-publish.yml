@@ -52,7 +52,7 @@ jobs:
         run: docker build compose/ansible_controller --tag $IMAGE_NAME_CONTROLLER
         
       - name: Building node base
-        run: docker build compose/node_controller --tag $IMAGE_NAME_NODE
+        run: docker build compose/ubuntu_node --tag $IMAGE_NAME_NODE
 
       - name: Log into GitHub Container Registry
       # TODO: Create a PAT with `read:packages` and `write:packages` scopes and save it as an Actions secret `CR_PAT`
