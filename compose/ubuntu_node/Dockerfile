@@ -9,4 +9,4 @@ RUN mkdir /var/run/sshd
 
 EXPOSE 22
 
-CMD ["/usr/sbin/sshd", "-D", "-e"]
+CMD ["/usr/sbin/sshd", "-D", "-e", "-vvv"]

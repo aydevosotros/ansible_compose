@@ -14,7 +14,6 @@ on:
   pull_request:
 
 env:
-  # TODO: Change variable to your image's name.
   IMAGE_NAME_CONTROLLER: ansible_controller
   IMAGE_NAME_NODE: ansible_node
 
