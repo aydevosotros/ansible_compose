@@ -25,7 +25,8 @@ services:
       context: compose/ubuntu_node
     secrets:
       - source: node_authorized_keys
-        target: /root/.ssh/authorized_keys
+        target: authorized_keys
+        mode: 0700
     volumes:
     - ./configs/node/sshd_config:/etc/ssh/sshd_config
 
