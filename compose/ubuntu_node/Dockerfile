@@ -1,5 +1,5 @@
-#FROM ubuntu:precise-20161209
-FROM ubuntu
+FROM ubuntu:16.04
+#FROM ubuntu
 
 RUN apt-get update && apt-get install -y \
     openssh-server \
